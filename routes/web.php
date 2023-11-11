@@ -5,7 +5,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Auth\Middleware\Authenticate;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\SpecialistController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -23,9 +25,9 @@ Route::controller(FrontendController::class)->name('frontend.')->group(function 
     Route::get('/', 'index')->name('index');
 });
 
-Route::get('loginadmin', [AuthController::class, 'index'])->name('login')->middleware('guest');
-Route::post('login', [AuthController::class, 'login'])->name('login.process');
-Route::get('logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+Route::get('/loginadmin', [AuthController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/loginadmin', [AuthController::class, 'login'])->name('login.process');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
 Route::middleware([Authenticate::class])->group(function () {
 
@@ -39,6 +41,22 @@ Route::middleware([Authenticate::class])->group(function () {
     });
 
     Route::controller(UserController::class)->prefix('users')->name('users.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/', 'store')->name('store');
+        Route::get('/{id}/edit', 'edit')->name('edit');
+        Route::put('/{id}', 'update')->name('update');
+        Route::delete('/{id}', 'destroy')->name('destroy');
+    });
+
+    Route::controller(SpecialistController::class)->prefix('specialists')->name('specialists.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::post('/', 'store')->name('store');
+        Route::put('/{id}', 'update')->name('update');
+        Route::delete('/{id}', 'destroy')->name('destroy');
+    });
+
+    Route::controller(DoctorController::class)->prefix('doctors')->name('doctors.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/create', 'create')->name('create');
         Route::post('/', 'store')->name('store');
