@@ -21,9 +21,10 @@
             --secondary-color: #7FC8F8;
             --font-poppins: 'Poppins', sans-serif;
             --font-libre: 'Libre Baskerville', serif;
+            --dark-color: #234874; 
         }
         *{
-          box-sizing: border-box;
+          /* box-sizing: border-box; */
           padding: 0;
           margin: 0;
         }
@@ -66,9 +67,16 @@
             margin-top: 1000000rem;
             padding: 10px 20px;
             text-decoration: none;
-            background-color: var(--secondary-color);
+            background-color: var(--primary-color);
             font-weight: 500;
             border-radius: 20px;
+        }
+        .btn-start:hover{
+          color: white;
+          background-color: var(--dark-color);
+        }
+        .card-doctor{
+          background: linear-gradient(to right, #D8EEFF, #FDFCE0);
         }
       </style>
     <title>SemestaCare</title>
@@ -113,7 +121,7 @@
         <div class="container-fluid px-5">
           <div class="row align-items-center justify-content-between">
             <div class="col-md-6">
-              <p style="color: var(--primary-color);font-family: 'Libre Baskerville', serif; font-weigth: 700; font-size: 40px;">The Best <br> Health Service <br> In Your Hands</p>
+              <p style="color: var(--primary-color);font-family: 'Libre Baskerville', serif; font-size: 40px;">The Best <br> Health Service <br> In Your Hands</p>
                 <p class="mb-4">In our consultations, we offer reliable health advice. Our team of experts is here to help and provide you with the information you need. We're your trusted partners in making informed decisions about your health. 
                   Your well-being is our priority.</p>
                   <a href="" class="btn-start">Start Consultation</a>
@@ -125,30 +133,81 @@
         </div>
       </section>
       <section id="service">
-        <div class="container-fluid px-5 py-3">
+        <div class="container-fluid px-5 py-3 d-flex flex-column gap-3">
           <p style="color: #FF6392; font-weight: bold;text-align:center; font-size: 15px;">SERVICES</p>
-          <h2 class="text-center" style="font-family: var(--font-libre)">Provides Our Best Services</h2>
+          <h2 class="text-center " style="font-family: var(--font-libre); color: var(--primary-color); ">Provides Our Best Services</h2>
+          <div class="d-flex justify-content-center align-items-center gap-3 mt-2">
+                <div class="card px-3 py-2" style="width: 15rem">
+                  <div class="card-body d-flex flex-column align-items-center">
+                    <img class="mb-2" style="width: 40px;"  src="{{ asset('/assets/img/icons/services/cardiology.png') }}" alt="">
+                    <p style="color: var(--primary-color);font-family: 'Libre Baskerville', serif; font-size: 18px;">Cardiology</p>
+                    <p class=" text-center">We're here for cardiology. We diagnose and treat conditions for your well-being.</p>
+                  </div>
+                </div>
+                <div class="card px-3 py-2" style="width: 15rem;">
+                  <div class="card-body d-flex flex-column align-items-center">
+                    <img class="mb-2" src="{{ asset('/assets/img/icons/services/neurology.png') }}" alt="">
+                    <p style="color: var(--primary-color);font-family: 'Libre Baskerville', serif; font-size: 18px;">Neurology</p>
+                    <p class=" text-center">We're here to help with neurology. From the brain, we diagnose and treat conditions for your better health.</p>
+                  </div>
+                </div>
+                <div class="card px-3 py-2" style="width: 15rem;">
+                  <div class="card-body d-flex flex-column align-items-center">
+                    <img class="mb-2" src="{{ asset('/assets/img/icons/services/orthopedics.png') }}" alt="">
+                    <p style="color: var(--primary-color);font-family: 'Libre Baskerville', serif; font-size: 18px;">Orthopedics</p>
+                    <p class=" text-center">We're here to help with orthopedic care. From fractures to arthritis, for improved mobility and comfortable</p>
+                  </div>
+                </div>
+                <div class="card px-3 py-2" style="width: 15rem;">
+                  <div class="card-body d-flex flex-column align-items-center">
+                    <img class="mb-2" src="{{ asset('/assets/img/icons/services/surgery.png') }}" alt="">
+                    <p style="color: var(--primary-color);font-family: 'Libre Baskerville', serif; font-size: 18px;">Surgery</p>
+                    <p class="text-center">We're here to help through surgery. Our doctors are ready to diagnose and treat your conditions.</p>
+                  </div>
+                </div>
+          </div>
+          <div class="container my-5 py-5 ">
+          </div>
+        </div>
+      </section>
+      <section id="doctors">
+        <div class="container-fluid px-5 py-3 d-flex flex-column gap-3">
+          <p style="color: #FF6392; font-weight: bold;text-align:center; font-size: 15px;" class="text-uppercase">Our Doctors</p>
+          <h2 class="text-center" style="font-family: var(--font-libre); color: var(--primary-color);">Meet Our Professional Doctors</h2>
           <div class="d-flex justify-content-center align-items-center gap-3">
-                <div class="card p-4">
-                  <div class="card body">
-                    <img src="{{ asset('/assets/img/icons/services/cardiology.png') }}" alt="">
+                <div class="card card-doctor" style="width: 15rem; height: 25rem">
+                <div class="card-body">
+                  <img class="mx-auto " src="{{ asset('/assets/img/doctors/dummy-1.png') }}" style="width: 12rem" alt="">
+                </div>
+                <div class="card-footer  bg-white">
+                  <p style="color: #FF6392; font-weight: bold;text-align:center; font-size: 20px; margin-bottom: -5px;">Dr. Lawson</p>
+                  <small class="text-center" style="text-align: center">Dentist</small>
+                </div>
+                  
+                </div>
+                <div class="card px-3 py-2" style="width: 15rem; height: 18rem">
+                  <div class="card-body d-flex flex-column align-items-center">
+                    <img class="mb-2" src="{{ asset('/assets/img/icons/services/neurology.png') }}" alt="">
+                    <p style="color: var(--primary-color);font-family: 'Libre Baskerville', serif; font-size: 18px;">Neurology</p>
+                    <p class=" text-center">We're here to help with neurology. From the brain, we diagnose and treat conditions for your better health.</p>
                   </div>
                 </div>
-                <div class="card">
-                  <div class="card body">
-                    <h1>test</h1>
+                <div class="card px-3 py-2" style="width: 15rem; height: 18rem">
+                  <div class="card-body d-flex flex-column align-items-center">
+                    <img class="mb-2" src="{{ asset('/assets/img/icons/services/orthopedics.png') }}" alt="">
+                    <p style="color: var(--primary-color);font-family: 'Libre Baskerville', serif; font-size: 18px;">Orthopedics</p>
+                    <p class=" text-center">We're here to help with orthopedic care. From fractures to arthritis, for improved mobility and comfortable</p>
                   </div>
                 </div>
-                <div class="card">
-                  <div class="card body">
-                    <h1>test</h1>
+                <div class="card px-3 py-2" style="width: 15rem; height: 18rem">
+                  <div class="card-body d-flex flex-column align-items-center">
+                    <img class="mb-2" src="{{ asset('/assets/img/icons/services/surgery.png') }}" alt="">
+                    <p style="color: var(--primary-color);font-family: 'Libre Baskerville', serif; font-size: 18px;">Surgery</p>
+                    <p class="text-center">We're here to help through surgery. Our doctors are ready to diagnose and treat your conditions.</p>
                   </div>
                 </div>
-                <div class="card">
-                  <div class="card body">
-                    <h1>test</h1>
-                  </div>
-                </div>
+          </div>
+          <div class="container my-5 py-5 ">
           </div>
         </div>
       </section>
