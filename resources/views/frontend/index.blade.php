@@ -136,6 +136,15 @@
         .text {
             color: var(--dark-color)
         }
+
+        .footer{
+            color: white;
+            background-color: var(--primary-color);  
+        }
+        .sub-footer {
+            font-family: var(--font-libre);
+            color: white;
+        }
     </style>
     <title>SemestaCare</title>
 </head>
@@ -164,6 +173,12 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#consultations">Consultations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonial">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About Us</a>
                     </li>
                 </ul>
             </div>
@@ -307,7 +322,7 @@
     </section>
 
     <section id="consultations" style="min-height: 100vh" class="center">
-        <div class="container-fluid px-5">
+        <div class="container-fluid py-5 px-5">
             <div class="row gy-4 flex-md-row flex-column-reverse">
                 <div class="col-md-6 col-12">
                     <p class="title text-uppercase text-start">Consultation</p>
@@ -340,6 +355,160 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section id="testimonial" style="min-height: 100vh" >
+        <div class="container-fluid  px-5">
+        <p class="title text-uppercase">
+                testimonials</p>
+            <h2 class="text-center mb-5 subtitle">What Our Patients Say About Us</h2>
+            <div class="container-fluid mt-3 px-5">
+                <div class="row center gy-5">
+                    <div class="col-lg-3 col-md-6 col-12 center">
+                        <div class="card px-3 py-2" style="width: 15rem;">
+                            <div class="card-body d-flex flex-column align-items-center">
+                                <img class="mb-2" style="margin-top: -3.5rem" src="{{ asset('/assets/img/doctors/jude.png') }}"
+                                    alt="">
+                                <p class="title-services text-center">
+                                    Jude Bellingham</p>
+                                <div class="d-flex flex-row gap-1 my-2">
+                                    @for ($i = 0; $i < 3; $i++)
+                                        <div style="margin-top: -20px" class="text-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                viewBox="0 0 16 16" fill="none">
+                                                <path
+                                                    d="M4.03402 14.459L5.0641 10.0059L5.07767 9.94721L5.03218 9.90778L1.57735 6.91253L6.14199 6.51629L6.202 6.51108L6.22545 6.4556L8.00001 2.25687L9.77456 6.4556L9.79802 6.51108L9.85803 6.51629L14.4227 6.91253L10.9678 9.90778L10.9223 9.94721L10.9359 10.0059L11.966 14.459L8.05166 12.0977L8.00001 12.0665L7.94836 12.0977L4.03402 14.459Z"
+                                                    fill="#FFE45E" stroke="#FF6392" stroke-width="0.2" />
+                                            </svg>
+                                        </div>
+                                    @endfor
+                                </div>
+
+                                <p class="text-center text">i get tackled by gavi😅.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12 center">
+                        <div class="card px-3 py-2" style="width: 15rem;">
+                            <div class="card-body d-flex flex-column align-items-center">
+                                <img class="mb-2" style="margin-top: -3.5rem" src="{{ asset('/assets/img/doctors/ronaldo.png') }}"
+                                    alt="">
+                                <p class="title-services text-center">
+                                    Ronaldo</p>
+                                <div class="d-flex flex-row gap-1 my-2">
+                                    @for ($i = 0; $i < 5; $i++)
+                                        <div style="margin-top: -20px" class="text-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                viewBox="0 0 16 16" fill="none">
+                                                <path
+                                                    d="M4.03402 14.459L5.0641 10.0059L5.07767 9.94721L5.03218 9.90778L1.57735 6.91253L6.14199 6.51629L6.202 6.51108L6.22545 6.4556L8.00001 2.25687L9.77456 6.4556L9.79802 6.51108L9.85803 6.51629L14.4227 6.91253L10.9678 9.90778L10.9223 9.94721L10.9359 10.0059L11.966 14.459L8.05166 12.0977L8.00001 12.0665L7.94836 12.0977L4.03402 14.459Z"
+                                                    fill="#FFE45E" stroke="#FF6392" stroke-width="0.2" />
+                                            </svg>
+                                        </div>
+                                    @endfor
+                                </div>
+
+                                <p class="text-center text">Suiiii🏋️‍♂️💪</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12 center">
+                        <div class="card py-2" style="width: 15rem;">
+                            <div class="card-body d-flex flex-column align-items-center">
+                                <img class="mb-2" style="margin-top: -3.5rem" src="{{ asset('/assets/img/doctors/haaland.png') }}"
+                                    alt="">
+                                <p class="title-services text-center">
+                                    Erling Haaland</p>
+                                <div class="d-flex flex-row gap-1 my-2">
+                                    @for ($i = 0; $i < 4; $i++)
+                                        <div style="margin-top: -20px" class="text-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                viewBox="0 0 16 16" fill="none">
+                                                <path
+                                                    d="M4.03402 14.459L5.0641 10.0059L5.07767 9.94721L5.03218 9.90778L1.57735 6.91253L6.14199 6.51629L6.202 6.51108L6.22545 6.4556L8.00001 2.25687L9.77456 6.4556L9.79802 6.51108L9.85803 6.51629L14.4227 6.91253L10.9678 9.90778L10.9223 9.94721L10.9359 10.0059L11.966 14.459L8.05166 12.0977L8.00001 12.0665L7.94836 12.0977L4.03402 14.459Z"
+                                                    fill="#FFE45E" stroke="#FF6392" stroke-width="0.2" />
+                                            </svg>
+                                        </div>
+                                    @endfor
+                                </div>
+
+                                <p class="text-center text">i love messi👌.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" style="min-height: 100vh">
+        <div class="container-fluid px-5 py-5 mb-5 ">
+            <p class="title text-uppercase">
+                about us</p>
+            <h2 class="text-center mb-4 subtitle">Why You Should Choose Us?</br>Get Know About Us</h2>
+            <div class="container-fluid px-5">
+                <div class="row center gy-5">
+                    <div class="col-lg-3 col-md-6 col-12 center">
+                        <div class="card px-3 py-2" style="width: 15rem">
+                            <div class="card-body d-flex flex-column align-items-center">
+                                <img class="mb-2" style="width: 40px;"
+                                    src="{{ asset('/assets/img/icons/about/pro.png') }}" alt="">
+                                <p class="title-services">
+                                All Professionals</p>
+                                <p class="text-center text">We always ensure our doctors work well and serve professional.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12 center">
+                        <div class="card px-3 py-2" style="width: 15rem;">
+                            <div class="card-body d-flex flex-column align-items-center">
+                                <img class="mb-2" src="{{ asset('/assets/img/icons/about/secure.png') }}"
+                                    alt="">
+                                <p class="title-services">
+                                Fully Secure</p>
+                                <p class="text-center text">All data and chat on our website is safely encrypted.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12 center">
+                        <div class="card px-3 py-2" style="width: 15rem;">
+                            <div class="card-body d-flex flex-column align-items-center">
+                                <img class="mb-2" src="{{ asset('/assets/img/icons/about/happy.png') }}"
+                                    alt="">
+                                <p class="title-services">
+                                Happy Patients</p>
+                                <p class="text-center text">We always ensure our patients are happy with the services we provide.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12 center">
+                        <div class="card px-3 py-2" style="width: 15rem;">
+                            <div class="card-body d-flex flex-column align-items-center">
+                                <img class="mb-2" src="{{ asset('/assets/img/icons/about/24hours.png') }}"
+                                    alt="">
+                                <p class="title-services">
+                                24Hours Support</p>
+                                <p class="text-center text">We will always help you when you need us at any time.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="footer">
+        <div class="container-fluid d-flex flex-column align-items-center footer pt-5">
+            <h2 class="text-center sub-footer">
+                <span>
+                    <img src="{{ asset('/assets/img/favicon/footer-logo.png') }}" class="mx-2" width="50">
+                </span> 
+                SemestaCare
+            </h2>
+            <p class="text-center text-white px-5 my-4  text">SemestaCare: Talk to top doctors online. Anytime. Quality care, secure platform. </br>Specialists in neurology, dentistry, surgery.</p>
+            <p class="text-center text-white border-top border-white mt-3 pt-3 w-100 text">Copyright © 2023 SemestaCare </p>
+            
         </div>
     </section>
 
