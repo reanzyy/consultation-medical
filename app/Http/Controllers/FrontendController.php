@@ -10,4 +10,13 @@ class FrontendController extends Controller
     {
         return view('frontend.index');
     }
+
+    public function list()
+    {
+       
+        return view('frontend.list_doctor');
+    }
+
+
+     
 }

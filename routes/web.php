@@ -25,9 +25,12 @@ Route::controller(FrontendController::class)->name('frontend.')->group(function 
     Route::get('/', 'index')->name('index');
 });
 
-Route::get('/loginadmin', [AuthController::class, 'index'])->name('login')->middleware('guest');
-Route::post('/loginadmin', [AuthController::class, 'login'])->name('login.process');
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+Route::get('/list', [FrontendController::class, 'list'])->name('frontend.list');
+
+
+Route::get('loginadmin', [AuthController::class, 'index'])->name('login')->middleware('guest');
+Route::post('login', [AuthController::class, 'login'])->name('login.process');
+Route::get('logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
 Route::middleware([Authenticate::class])->group(function () {
 
