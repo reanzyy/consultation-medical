@@ -23,6 +23,10 @@ use App\Http\Controllers\UserController;
 
 Route::controller(FrontendController::class)->name('frontend.')->group(function () {
     Route::get('/', 'index')->name('index');
+    Route::get('/login', 'login')->name('login');
+    Route::post('/login', 'processLogin')->name('login.process')->middleware('guest');
+    Route::get('/register', 'register')->name('register');
+    Route::post('/register', 'processRegister')->name('register.process')->middleware('guest');
 });
 
 Route::get('/loginadmin', [AuthController::class, 'index'])->name('login')->middleware('guest');

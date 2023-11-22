@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ url('/assets/vendor/css/theme-default.css') }}"
         class="template-customizer-theme-css" />
     <link rel="stylesheet" href="{{ url('/assets/css/demo.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
@@ -182,10 +183,19 @@
                     </li>
                 </ul>
             </div>
+            @auth
+            <div class="d-flex align-items-center gap-2">
+                <p class="p-0 m-0">{{ Auth::user()->name }}</p>
+                <img src="https://ui-avatars.com/api/?name={{ Auth::user()->name }}&color=528AC8" alt="" style="width: 35px; height: 35px;border: 2px solid var(--primary-color); border-radius: 50%;">
+                <a href="{{ route('logout') }}" style="font-size: 18px"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+            </div>
+            @endauth
+            @guest                
             <div id="btn-navbar">
                 <a href="" class="btn-register">Register</a>
-                <a href="" class="btn-login">Login</a>
+                <a href="{{ route('frontend.login') }}" class="btn-login">Login</a>
             </div>
+            @endguest
         </div>
     </nav>
     <!-- End Navbar -->
