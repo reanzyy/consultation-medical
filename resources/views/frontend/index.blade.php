@@ -113,7 +113,7 @@
         <div class="container-fluid px-5">
           <div class="row align-items-center justify-content-between">
             <div class="col-md-6">
-              <p style="color: var(--primary-color);font-family: 'Libre Baskerville', serif; font-weigth: 700; font-size: 40px;">The Best <br> Health Service <br> In Your Hands</p>
+              <p style="color: var(--primary-color);font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 40px;">The Best <br> Health Service <br> In Your Hands</p>
                 <p class="mb-4">In our consultations, we offer reliable health advice. Our team of experts is here to help and provide you with the information you need. We're your trusted partners in making informed decisions about your health. 
                   Your well-being is our priority.</p>
                   <a href="" class="btn-start">Start Consultation</a>

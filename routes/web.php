@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Auth\Middleware\Authenticate;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\ListDoctorController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -22,6 +23,9 @@ use App\Http\Controllers\UserController;
 Route::controller(FrontendController::class)->name('frontend.')->group(function () {
     Route::get('/', 'index')->name('index');
 });
+
+Route::get('/list', [FrontendController::class, 'list'])->name('frontend.list');
+
 
 Route::get('loginadmin', [AuthController::class, 'index'])->name('login')->middleware('guest');
 Route::post('login', [AuthController::class, 'login'])->name('login.process');
