@@ -31,6 +31,18 @@
                 'childs' => [],
             ],
             (object) [
+                'name' => 'Spesialist',
+                'icon' => 'bx-dna',
+                'link' => 'specialists',
+                'childs' => [],
+            ],
+            (object) [
+                'name' => 'Doctor',
+                'icon' => 'bxs-user-badge',
+                'link' => 'doctors',
+                'childs' => [],
+            ],
+            (object) [
                 'title' => 'Account',
             ],
             (object) [
