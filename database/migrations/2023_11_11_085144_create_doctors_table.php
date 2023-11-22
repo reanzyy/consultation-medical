@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('doctors', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('name');
-            $table->unsignedBigInteger('specialist_id');
+            $table->unsignedInteger('specialist_id');
             $table->time('start_time');
             $table->time('end_time');
             $table->integer('price');
