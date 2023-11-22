@@ -20,8 +20,7 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
-        'photo',
-        'fcm_token'
+        'phone',
     ];
 
     /**
@@ -47,11 +46,6 @@ class User extends Authenticatable
     protected $attributes = [
         'password' => ''
     ];
-
-    public function employee()
-    {
-        return $this->hasOne(Employee::class);
-    }
 
     public function routeNotificationForFcm()
     {
