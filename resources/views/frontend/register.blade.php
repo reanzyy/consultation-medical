@@ -12,7 +12,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
-        
+
         :root {
             --background-color: #F9F9F9;
             --primary-color: #528AC8;
@@ -21,23 +21,31 @@
             --font-libre: 'Libre Baskerville', serif;
             --dark-color: #234874;
         }
-        .row input{
+
+        body{
+            overflow: hidden;
+        }
+
+        .row input {
             border: 1px solid var(--primary-color);
             border-radius: 10px;
         }
-        .row h4{
+
+        .row h4 {
             font-family: var(--font-libre);
             color: var(--primary-color);
         }
-        .row p{
-            font-family: var(--font-poppins); 
-            font-size: 12px; 
-            font-weight:500;
+
+        .row p {
+            font-family: var(--font-poppins);
+            font-size: 12px;
+            font-weight: 500;
             color: var(--dark-color);
         }
-        .row label{
-            font-family: var(--font-poppins); 
-            font-size: 12px; 
+
+        .row label {
+            font-family: var(--font-poppins);
+            font-size: 12px;
             font-weight: bold;
             text-transform: capitalize;
             color: var(--dark-color);
@@ -48,23 +56,22 @@
 </head>
 
 <body>
-    <section style="height: 100vh;">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <x-alert />
-                                <div class="col-md-8 p-0" style="margin-end: 20rem;">
-                                    <div class="image" style="background: url({{ asset('/assets/img/illustrations/login-image.png') }}); background-postion:cover; background-repeat: no-repeat; height:400px;">
-                                    <a href="" class="app-brand-link gap-2">
-                                    <img src="{{ asset('/assets/img/favicon/logo.png') }}" draggable="false" width="50" class="mb-3">
-                                    </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <h4 class="mb-2">Register</h4>
+    <section>
+        <div>
+            <div class="row">
+                <x-alert />
+                <div class="col-md-7 p-0">
+                    <div class="image"
+                        style="background: url({{ asset('/assets/img/illustrations/login-image.png') }}); background-postion:cover; background-repeat: no-repeat; height:100vh; width: 100%;">
+                        <a href="" class="app-brand-link gap-2">
+                            <img src="{{ asset('/assets/img/favicon/logo.png') }}" draggable="false" width="50"
+                                class="m-5">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 d-flex align-items-center justify-content-start">
+                    <div>
+                        <h4 class="mb-2">Register</h4>
                                     <p class="mb-4">Create your account and join with us!</p>
                                     <form class="mb-3" action="{{ route('frontend.register.process') }}" method="post">
                                         @csrf
@@ -108,13 +115,10 @@
                                             <button class="btn d-grid w-100 text-white" style="background-color: var(--primary-color)" type="submit">Register</button>
                                         </div>
                                         <div class="d-flex gap-1">
-                                            <p>Don't have any account?</p>
-                                            <a href="{{ route('frontend.register') }}" class="fw-bold" style="font-size: 12px;">Register here</a>
+                                            <p>Already have an account?</p>
+                                            <a href="{{ route('frontend.login') }}" class="fw-bold" style="font-size: 12px;">Log in</a>
                                         </div>
                                     </form>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
