@@ -15,6 +15,7 @@ class FrontendController extends Controller
         return view('frontend.index');
     }
 
+
     public function login()
     {
         return view('frontend.login');
@@ -77,5 +78,11 @@ class FrontendController extends Controller
         ]);
             Auth::loginUsingId($user->id);
             return redirect()->route('frontend.index');
+    }
+
+    public function list()
+    {
+       
+        return view('frontend.list_doctor');
     }
 }
