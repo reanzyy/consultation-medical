@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\UserRole;
+use App\Models\Doctor;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -82,7 +83,8 @@ class FrontendController extends Controller
 
     public function list()
     {
-       
-        return view('frontend.list_doctor');
+    $doctors = Doctor::get();
+
+    return view('frontend.list_doctor', compact('doctors'));
     }
 }

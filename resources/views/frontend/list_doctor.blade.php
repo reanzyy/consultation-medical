@@ -259,38 +259,41 @@ line-height: normal;
                 </div>
             </div>
             <div class="row">
-                @for($i=1; $i<=6; $i++)
-                    <div class="col-md-4 mt-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-center align-items-center mb-2">
-                                    <div class=" card-doctor mb-2">
-                                    <img src="{{ asset('/assets/img/icons/services/usman.png') }}" alt="" class="foto-doctor">
-                                    <div class="dot"></div>
+                @foreach ($doctors as $doctor)
+                <div class="col-md-4 mt-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-center align-items-center mb-2">
+                                <div class=" card-doctor mb-2">
+                                <img src="{{ asset('/assets/img/icons/services/usman.png') }}" alt="" class="foto-doctor">
+                                <div class="dot"></div>
+                                </div>
+                                <div class="description " style="color: var(--primary-color);">
+                                    <p class="nama-dokter">{{ $doctor->name }}</p>
+                                    <p class="bidang-dokter">{{ $doctor->specialist->name }}</p>
+                                    <p class="bio-dokter">
+                                        <i class="fa-solid fa-clock"></i>
+                                        {{ \Carbon\Carbon::parse($doctor->start_time)->format('H:i') }} - 
+                                        {{ \Carbon\Carbon::parse($doctor->end_time)->format('H:i') }}
+                                    </p>                                    
+                                    <div class="rating-dokter">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            viewBox="0 0 16 16" fill="none">
+                                            <path 
+                                                d="M4.03402 14.459L5.0641 10.0059L5.07767 9.94721L5.03218 9.90778L1.57735 6.91253L6.14199 6.51629L6.202 6.51108L6.22545 6.4556L8.00001 2.25687L9.77456 6.4556L9.79802 6.51108L9.85803 6.51629L14.4227 6.91253L10.9678 9.90778L10.9223 9.94721L10.9359 10.0059L11.966 14.459L8.05166 12.0977L8.00001 12.0665L7.94836 12.0977L4.03402 14.459Z"
+                                                fill="#FFE45E" stroke="#FF6392" stroke-width="0.2" />
+                                        </svg>
+                                        5.0
                                     </div>
-                                    <div class="description " style="color: var(--primary-color);">
-                                        <p class="nama-dokter">Arip</p>
-                                        <p class="bidang-dokter">Dentist</p>
-                                        <p class="bio-dokter">Sunday-Friday</p>
-                                        <p class="bio-dokter">12-12</p>
-                                        <div class="rating-dokter">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                viewBox="0 0 16 16" fill="none">
-                                                <path 
-                                                    d="M4.03402 14.459L5.0641 10.0059L5.07767 9.94721L5.03218 9.90778L1.57735 6.91253L6.14199 6.51629L6.202 6.51108L6.22545 6.4556L8.00001 2.25687L9.77456 6.4556L9.79802 6.51108L9.85803 6.51629L14.4227 6.91253L10.9678 9.90778L10.9223 9.94721L10.9359 10.0059L11.966 14.459L8.05166 12.0977L8.00001 12.0665L7.94836 12.0977L4.03402 14.459Z"
-                                                    fill="#FFE45E" stroke="#FF6392" stroke-width="0.2" />
-                                            </svg>
-                                            5.0
-                                        </div>
-                                        <div class=" btn-consul mt-4 ">Busy
+                                    <div class=" btn-consul mt-4 ">Busy
 
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                @endfor
+                </div>
+                @endforeach
             </div>
         
         </div>

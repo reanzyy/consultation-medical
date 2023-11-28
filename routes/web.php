@@ -23,13 +23,13 @@ use App\Http\Controllers\UserController;
 
 Route::controller(FrontendController::class)->name('frontend.')->group(function () {
     Route::get('/', 'index')->name('index');
-    Route::get('/login', 'login')->name('login');
-    Route::post('/login', 'processLogin')->name('login.process')->middleware('guest');
+    Route::get('/loginUser', 'login')->name('loginUser');
+    Route::post('/loginUser', 'processLogin')->name('loginUser.process')->middleware('guest');
     Route::get('/register', 'register')->name('register');
     Route::post('/register', 'processRegister')->name('register.process')->middleware('guest');
+    Route::get('/list', [FrontendController::class, 'list'])->name('list')->middleware('auth');
 });
 
-Route::get('/list', [FrontendController::class, 'list'])->name('frontend.list');
 
 
 Route::get('loginadmin', [AuthController::class, 'index'])->name('login')->middleware('guest');

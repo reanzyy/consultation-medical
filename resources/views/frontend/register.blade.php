@@ -116,7 +116,7 @@
                                         </div>
                                         <div class="d-flex gap-1">
                                             <p>Already have an account?</p>
-                                            <a href="{{ route('frontend.login') }}" class="fw-bold" style="font-size: 12px;">Log in</a>
+                                            <a href="{{ route('frontend.loginUser') }}" class="fw-bold" style="font-size: 12px;">Log in</a>
                                         </div>
                                     </form>
                     </div>

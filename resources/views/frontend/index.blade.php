@@ -192,8 +192,8 @@
             @endauth
             @guest                
             <div id="btn-navbar">
-                <a href="" class="btn-register">Register</a>
-                <a href="{{ route('frontend.login') }}" class="btn-login">Login</a>
+                <a href="{{ route('frontend.register') }}" class="btn-register">Register</a>
+                <a href="{{ route('frontend.loginUser') }}" class="btn-login">Login</a>
             </div>
             @endguest
         </div>
@@ -209,7 +209,7 @@
                         to help and provide you with the information you need. We're your trusted partners in making
                         informed decisions about your health.
                         Your well-being is our priority.</p>
-                    <a href="" class="btn-start">Start Consultation</a>
+                    <a href="{{ route('frontend.list') }}" class="btn-start">Start Consultation</a>
                 </div>
                 <div class="col-md-6 col-12 center">
                     <img src="{{ asset('/assets/img/illustrations/doctor-hero-section.png') }}" draggable="false"
@@ -354,7 +354,7 @@
                         </svg>
                         Served directly by experts
                     </div>
-                    <a href="" class="btn-start">Start Consultation</a>
+                    <a href="{{ route('frontend.list') }}" class="btn-start">Start Consultation</a>
                 </div>
                 <div class="col-md-6 col-12">
                     <div style="position: relative; min-height: 450px">

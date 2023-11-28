@@ -73,7 +73,7 @@
                     <div>
                         <h4 class="mb-2">Log in</h4>
                     <p class="mb-4">Welcome back,please login to your account!</p>
-                    <form class="mb-3" action="{{ route('frontend.login.process') }}" method="post">
+                    <form class="mb-3" action="{{ route('frontend.loginUser.process') }}" method="post">
                         @csrf
                         <div class="mb-3" style="width: 300px">
                             <label for="email" class="form-label">Email</label>

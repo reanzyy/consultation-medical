@@ -13,13 +13,19 @@ class Doctor extends Model
         'name',
         'hospital_id',
         'specialist_id',
-        'start_date',
-        'end_date',
+        'start_time',
+        'end_time',
         'status',
         'price',
         'phone',
         'location',
     ];
+    
+    protected $dates = [
+    'start_time', 
+    'end_time'
+    ];
+
     public function hospital()
     {
         return $this->belongsTo(Hospital::class);

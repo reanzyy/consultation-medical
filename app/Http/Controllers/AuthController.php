@@ -28,7 +28,7 @@ class AuthController extends Controller
             ->first();
 
         if (!$user) {
-            return redirect('login')->with('error', 'Email and password do not match!');
+            return redirect('loginadmin')->with('error', 'Email and password do not match!');
         }
 
         if (Hash::check($request->password, $user->password)) {
@@ -36,7 +36,7 @@ class AuthController extends Controller
             return redirect()->intended('dashboard')->withSuccess("Welcome, {$user->name}!");
         }
 
-        return redirect('login')->with('error', 'Email and password do not match!');
+        return redirect('loginadmin')->with('error', 'Email and password do not match!');
     }
 
     public function logout()
@@ -44,6 +44,6 @@ class AuthController extends Controller
         Session::flush();
         Auth::logout();
 
-        return redirect()->route('login')->withSuccess('Logout!');
+        return redirect()->route('frontend.index')->withSuccess('Logout!');
     }
 }

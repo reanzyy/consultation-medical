@@ -32,7 +32,6 @@ class DoctorController extends Controller
             'price' => 'required|integer',
             'phone' => 'required|max:13',
         ]);
-
         Doctor::create($request->all());
 
         return redirect()->route('doctors.index')->withSuccess('Doctor successfully created');
