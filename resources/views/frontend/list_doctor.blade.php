@@ -99,7 +99,7 @@
             margin-bottom: 5px;
             margin-right: auto;
             width: 139px;
-            height: 26px;
+            min-height: 26px;
         }
 
         .form-control {
@@ -248,18 +248,20 @@ line-height: normal;
                         Make Assignment with our doctor</p>
                 </div>
                 <div class="col-md-6">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search...">
-                        <div class="input-group-append">
-                            <button class="btn btn-transparent text-primary" type="submit">
-                                <i class="fa-solid fa-magnifying-glass"></i>
-                            </button>
+                    <form action="{{ route('frontend.list') }}" method="">
+                        <div class="input-group">
+                            <input type="text" name="query" value="{{ old('query', request('query')) }}" class="form-control" placeholder="Search...">
+                            <div class="input-group-append">
+                                <button class="btn btn-transparent text-primary" type="submit">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
             <div class="row">
-                @foreach ($doctors as $doctor)
+                @forelse ($doctors as $doctor)
                 <div class="col-md-4 mt-4">
                     <div class="card">
                         <div class="card-body">
@@ -293,7 +295,11 @@ line-height: normal;
                         </div>
                     </div>
                 </div>
-                @endforeach
+                @empty
+                <div class="d-flex align-items-center justify-content-center" style="height: 200px;">
+                    <h5>Upss data is empty</h5>
+                </div>
+                @endforelse
             </div>
         
         </div>

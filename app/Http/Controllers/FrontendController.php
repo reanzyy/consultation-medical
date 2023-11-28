@@ -50,25 +50,28 @@ class FrontendController extends Controller
         return redirect('login')->with('error', 'Email and password do not match!');
     }
 
-    public function processRegister(Request $request){
-        $request->validate([
-            'fullname' => 'required|string|min:5',
-            'email' => 'required|email|unique:users',
-            'phone' => 'required|min:10',
-            'password' => 'required|min:8'
-        ],
-        [
-            'fullname.required' => 'Fullname harus diisi',
-            'fullname.min' => 'Fullname harus berisi minimal 5',
-            'email.required' => 'Email harus diisi',
-            'email.unique' => 'Email sudah digunakan',
-            'phone.unique' => 'Phone sudah digunakan',
-            'phone.required' => 'Phone harus diisi',
-            'phone.min' => 'Phone harus berisi minimal 10',
-            'email.email' => 'Email harus berbentuk email',
-            'password.required' => 'Password harus diisi',
-            'password.min' => 'Password harus berisi minimal 8'
-        ]);
+    public function processRegister(Request $request)
+    {
+        $request->validate(
+            [
+                'fullname' => 'required|string|min:5',
+                'email' => 'required|email|unique:users',
+                'phone' => 'required|min:10',
+                'password' => 'required|min:8'
+            ],
+            [
+                'fullname.required' => 'Fullname harus diisi',
+                'fullname.min' => 'Fullname harus berisi minimal 5',
+                'email.required' => 'Email harus diisi',
+                'email.unique' => 'Email sudah digunakan',
+                'phone.unique' => 'Phone sudah digunakan',
+                'phone.required' => 'Phone harus diisi',
+                'phone.min' => 'Phone harus berisi minimal 10',
+                'email.email' => 'Email harus berbentuk email',
+                'password.required' => 'Password harus diisi',
+                'password.min' => 'Password harus berisi minimal 8'
+            ]
+        );
 
         $user = User::create([
             'name' => $request->fullname,
@@ -77,14 +80,25 @@ class FrontendController extends Controller
             'password' => Hash::make($request->password),
             'role' => UserRole::Consultan,
         ]);
-            Auth::loginUsingId($user->id);
-            return redirect()->route('frontend.index');
+        Auth::loginUsingId($user->id);
+        return redirect()->route('frontend.index');
     }
 
-    public function list()
+    public function list(Request $request)
     {
-    $doctors = Doctor::get();
+        $query = Doctor::query();
 
-    return view('frontend.list_doctor', compact('doctors'));
+        if ($request->has('query')) {
+            $query->where(function ($query) use ($request) {
+                $query->where('name', 'LIKE', '%' . $request->input('query') . '%')
+                    ->orWhereHas('specialist', function ($subQuery) use ($request) {
+                        $subQuery->where('name', 'LIKE', '%' . $request->input('query') . '%');
+                    });
+            });
+        }
+
+        $doctors = $query->get();
+
+        return view('frontend.list_doctor', compact('doctors'));
     }
 }
