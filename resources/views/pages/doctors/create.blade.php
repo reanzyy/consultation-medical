@@ -43,8 +43,7 @@
                                 </div>
                             </div>
                             <div class="form-group row mb-3">
-                                <label class="col-lg-3 col-form-label">Specialists <span
-                                        class="text-danger">*</span></label>
+                                <label class="col-lg-3 col-form-label">Specialist <span class="text-danger">*</span></label>
                                 <div class="col-lg-9">
                                     <select name="specialist_id"
                                         class="form-select @error('specialist_id') is-invalid @enderror">
@@ -55,6 +54,23 @@
                                     </select>
                                     <div class="invalid-feedback">
                                         @error('specialist_id')
+                                            {{ $message }}
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-3">
+                                <label class="col-lg-3 col-form-label">Hospital <span class="text-danger">*</span></label>
+                                <div class="col-lg-9">
+                                    <select name="hospital_id"
+                                        class="form-select @error('hospital_id') is-invalid @enderror">
+                                        <option>Choose data</option>
+                                        @foreach ($hospitals as $item)
+                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        @error('hospital_id')
                                             {{ $message }}
                                         @enderror
                                     </div>
@@ -108,6 +124,36 @@
                                         value="{{ old('phone') }}">
                                     <div class="invalid-feedback">
                                         @error('phone')
+                                            {{ $message }}
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-3">
+                                <label class="col-lg-3 col-form-label">Location <span class="text-danger">*</span></label>
+                                <div class="col-lg-9">
+                                    <textarea name="location" rows="5" class="form-control  @error('location') is-invalid @enderror">{{ old('location') }}</textarea>
+                                    <div class="invalid-feedback">
+                                        @error('location')
+                                            {{ $message }}
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-3">
+                                <label class="col-lg-3 col-form-label">Status <span class="text-danger">*</span></label>
+                                <div class="col-lg-9">
+                                    <select class="form-control select select2-hidden-accessible" name="status">
+                                        <option disabled>Choose data</option>
+                                        <option value="offline" {{ old('status') == 'offline' ? 'selected' : '' }}>Offline
+                                        </option>
+                                        <option value="busy" {{ old('status') == 'busy' ? 'selected' : '' }}>Busy
+                                        </option>
+                                        <option value="available" {{ old('status') == 'available' ? 'selected' : '' }}>
+                                            Available</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        @error('status')
                                             {{ $message }}
                                         @enderror
                                     </div>

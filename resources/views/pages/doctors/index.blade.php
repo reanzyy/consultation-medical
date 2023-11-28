@@ -38,10 +38,13 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Name</th>
+                                    <th>Hospital</th>
                                     <th>Specialist</th>
                                     <th>Working hours</th>
                                     <th>Price</th>
                                     <th>Phone</th>
+                                    <th>Location</th>
+                                    <th>Status</th>
                                     <th width="22%">Actions</th>
                                 </tr>
                             </thead>
@@ -50,11 +53,37 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $doctor->name }}</td>
+                                        <td>{{ $doctor->hospital->name }}</td>
                                         <td>{{ $doctor->specialist->name }}</td>
                                         <td>{{ Carbon\Carbon::parse($doctor->start_time)->format('H:i') . ' - ' . Carbon\Carbon::parse($doctor->end_time)->format('H:i') }}
                                         </td>
                                         <td>{{ 'IDR. ' . number_format($doctor->price) }}</td>
                                         <td>{{ $doctor->phone }}</td>
+                                        <td>{{ $doctor->location }}</td>
+                                        <td>
+                                            @switch($doctor->status)
+                                                @case('offline')
+                                                    <span class="badge bg-info">
+                                                        Offline
+                                                    </span>
+                                                @break
+
+                                                @case('busy')
+                                                    <span class="badge bg-warning">
+                                                        Busy
+                                                    </span>
+                                                @break
+
+                                                @case('available')
+                                                    <span class="badge bg-primary">
+                                                        Available
+                                                    </span>
+                                                @break
+
+                                                @default
+                                                    -
+                                            @endswitch
+                                        </td>
                                         <td class="text-end">
                                             <div class="d-flex gap-1">
                                                 <a class="btn btn-sm btn-warning"

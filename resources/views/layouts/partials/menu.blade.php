@@ -37,11 +37,29 @@
                 'childs' => [],
             ],
             (object) [
+                'name' => 'Hospital',
+                'icon' => 'bx bx-plus-medical',
+                'link' => 'hospitals',
+                'childs' => [],
+            ],
+            (object) [
                 'name' => 'Doctor',
                 'icon' => 'bxs-user-badge',
                 'link' => 'doctors',
                 'childs' => [],
             ],
+            // (object) [
+            //     'name' => 'Ratings',
+            //     'icon' => 'bxs-user-rating',
+            //     'link' => 'ratings',
+            //     'childs' => [],
+            // ],
+            // (object) [
+            //     'name' => 'Patient',
+            //     'icon' => 'bxs-user-rectangle',
+            //     'link' => 'patients',
+            //     'childs' => [],
+            // ],
             (object) [
                 'title' => 'Account',
             ],
@@ -92,4 +110,3 @@
 
     </ul>
 </aside>
-    
