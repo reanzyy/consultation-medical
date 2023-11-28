@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('consultations', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('patient_id');
+            $table->unsignedInteger('user_id');
             $table->unsignedInteger('doctor_id');
             $table->string('description');
             $table->unsignedInteger('approval_user_id');
             $table->string('approval_at');
             $table->timestamps();
 
-            $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('doctor_id')->references('id')->on('doctors')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('approval_user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
 

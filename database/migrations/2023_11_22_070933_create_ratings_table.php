@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -14,15 +14,15 @@ return new class extends Migration
         Schema::create('ratings', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('doctor_id');
+            $table->unsignedInteger('consultation_id');
             $table->text('description');
-            $table->unsignedInteger('approval_user_id');
-            $table->date('approval_at');
+            // $table->unsignedInteger('approval_user_id');
+            // $table->date('approval_at');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('doctor_id')->references('id')->on('doctors')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('approval_user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('consultation_id')->references('id')->on('consultations')->onDelete('cascade')->onUpdate('cascade');
+            // $table->foreign('approval_user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

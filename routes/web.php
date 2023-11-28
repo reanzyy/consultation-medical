@@ -7,6 +7,8 @@ use Illuminate\Auth\Middleware\Authenticate;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\HospitalController;
+use App\Http\Controllers\PatientController;
 use App\Http\Controllers\SpecialistController;
 use App\Http\Controllers\UserController;
 
@@ -64,6 +66,22 @@ Route::middleware([Authenticate::class])->group(function () {
     });
 
     Route::controller(DoctorController::class)->prefix('doctors')->name('doctors.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/', 'store')->name('store');
+        Route::get('/{id}/edit', 'edit')->name('edit');
+        Route::put('/{id}', 'update')->name('update');
+        Route::delete('/{id}', 'destroy')->name('destroy');
+    });
+
+    Route::controller(HospitalController::class)->prefix('hospitals')->name('hospitals.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::post('/', 'store')->name('store');
+        Route::put('/{id}', 'update')->name('update');
+        Route::delete('/{id}', 'destroy')->name('destroy');
+    });
+
+    Route::controller(PatientController::class)->prefix('patients')->name('patients.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/create', 'create')->name('create');
         Route::post('/', 'store')->name('store');

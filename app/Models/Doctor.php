@@ -11,8 +11,8 @@ class Doctor extends Model
 
     protected $fillable = [
         'name',
-        'hospital_id',
         'specialist_id',
+        'hospital_id',
         'start_time',
         'end_time',
         'status',
@@ -20,9 +20,9 @@ class Doctor extends Model
         'phone',
         'location',
     ];
-    
+
     protected $dates = [
-    'start_time', 
+    'start_time',
     'end_time'
     ];
 
@@ -35,5 +35,5 @@ class Doctor extends Model
     {
         return $this->belongsTo(Specialist::class);
     }
-    
+
 }

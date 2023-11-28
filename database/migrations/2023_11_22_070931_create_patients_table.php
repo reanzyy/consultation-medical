@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->text('address');
             $table->string('phone');
-            $table->unsignedInteger('rating_id');
+            // $table->unsignedInteger('rating_id')->nullable();
             $table->timestamps();
 
-            $table->foreign('rating_id')->references('id')->on('ratings')->onDelete('cascade')->onUpdate('cascade');
+            // $table->foreign('rating_id')->references('id')->on('ratings')->onDelete('cascade')->onUpdate('cascade');
 
         });
     }
