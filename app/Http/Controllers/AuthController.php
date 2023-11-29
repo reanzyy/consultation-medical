@@ -27,13 +27,11 @@ class AuthController extends Controller
             ->where('role', '!=', UserRole::Consultan)
             ->first();
 
-        if (!$user) {
-            return redirect('loginadmin')->with('error', 'Email and password do not match!');
-        }
-
+ 
         if (Hash::check($request->password, $user->password)) {
             Auth::loginUsingId($user->id);
             return redirect()->intended('dashboard')->withSuccess("Welcome, {$user->name}!");
+            return redirect('loginUser')->with('error', 'Email and password do not match!');
         }
 
         return redirect('loginadmin')->with('error', 'Email and password do not match!');

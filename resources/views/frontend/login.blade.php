@@ -58,22 +58,27 @@
 <body>
     <section>
         <div>
+       
             <div class="row">
-                <x-alert />
+            <x-alert />
                 <div class="col-md-7 p-0">
+                
                     <div class="image"
-                        style="background: url({{ asset('/assets/img/illustrations/login-image.png') }}); background-postion:cover; background-repeat: no-repeat; height:100vh; width: 100%;">
+                        style="background: url({{ asset('/assets/img/illustrations/login-image.png') }}) background-postion:cover background-repeat no-repeat height:100vh width: 100%">
                         <a href="" class="app-brand-link gap-2">
                             <img src="{{ asset('/assets/img/favicon/logo.png') }}" draggable="false" width="50"
                                 class="m-5">
                         </a>
                     </div>
+                
                 </div>
                 <div class="col-md-4 d-flex align-items-center justify-content-start">
+                
                     <div>
+                    
                         <h4 class="mb-2">Log in</h4>
                     <p class="mb-4">Welcome back,please login to your account!</p>
-                    <form class="mb-3" action="{{ route('frontend.loginUser.process') }}" method="post">
+                    <form class="mb-3" action="{{ route('frontend.process') }}" method="post">
                         @csrf
                         <div class="mb-3" style="width: 300px">
                             <label for="email" class="form-label">Email</label>

@@ -25,10 +25,10 @@ use App\Http\Controllers\UserController;
 
 Route::controller(FrontendController::class)->name('frontend.')->group(function () {
     Route::get('/', 'index')->name('index');
-    Route::get('/loginUser', 'login')->name('loginUser');
-    Route::post('/loginUser', 'processLogin')->name('loginUser.process')->middleware('guest');
+    Route::get('/login', 'login')->name('loginUser');
+    Route::post('/login/proses', 'processLogin')->name('process')->middleware('guest');
     Route::get('/register', 'register')->name('register');
-    Route::post('/register', 'processRegister')->name('register.process')->middleware('guest');
+    Route::post('/register/process', 'processRegister')->name('register.process')->middleware('guest');
     Route::get('/list', [FrontendController::class, 'list'])->name('list')->middleware('auth');
 });
 

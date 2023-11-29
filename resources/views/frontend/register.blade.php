@@ -62,7 +62,7 @@
                 <x-alert />
                 <div class="col-md-7 p-0">
                     <div class="image"
-                        style="background: url({{ asset('/assets/img/illustrations/login-image.png') }}); background-postion:cover; background-repeat: no-repeat; height:100vh; width: 100%;">
+                        style="background: url({{asset('/assets/img/illustrations/login-image.png') }}); background-postion:cover; background-repeat: no-repeat; height:100vh; width: 100%;">
                         <a href="" class="app-brand-link gap-2">
                             <img src="{{ asset('/assets/img/favicon/logo.png') }}" draggable="false" width="50"
                                 class="m-5">
@@ -71,43 +71,44 @@
                 </div>
                 <div class="col-md-4 d-flex align-items-center justify-content-start">
                     <div>
+                <x-alert/>
                         <h4 class="mb-2">Register</h4>
                                     <p class="mb-4">Create your account and join with us!</p>
                                     <form class="mb-3" action="{{ route('frontend.register.process') }}" method="post">
                                         @csrf
                                         <div class="mb-3">
                                             <label for="fullname" class="form-label">Full Name</label>
-                                            <input type="text" class="form-control" name="fullname" required />
-                                            <div class="invalid-feedback @error('fullname') is-invalid @enderror">
-                                                @error('fullname')
-                                                    {{ $message }}
+                                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" />
+                                            <div class="invalid-feedback @error('name') is-invalid @enderror">
+                                                @error('name')
+                                                <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
                                             </div>
                                         </div>
                                         <div class="mb-3">
                                             <label for="phone" class="form-label">Phone Number</label>
-                                            <input type="number" class="form-control" name="phone" required />
+                                            <input type="number" class="form-control @error('phone') is-invalid @enderror" name="phone" />
                                             <div class="invalid-feedback @error('phone') is-invalid @enderror">
                                                 @error('phone')
-                                                    {{ $message }}
+                                                <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
                                             </div>
                                         </div>
                                         <div class="mb-3">
                                             <label for="email" class="form-label">Email</label>
-                                            <input type="email" class="form-control" name="email" required />
+                                            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" />
                                             <div class="invalid-feedback @error('email') is-invalid @enderror">
                                                 @error('email')
-                                                    {{ $message }}
+                                                <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
                                             </div>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="password">Password</label>
-                                                <input type="password" class="form-control" name="password" required/>
+                                                <input type="password" class="form-control @error('password') is-invalid @enderror" name="password"/>
                                                 <div class="invalid-feedback @error('password') is-invalid @enderror">
                                                     @error('password')
-                                                        {{ $message }}
+                                                    <div class="invalid-feedback">{{ $message }}</div>
                                                     @enderror
                                                 </div>
                                         </div>

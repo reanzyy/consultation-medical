@@ -55,7 +55,99 @@
 
             color: var(--primary-color);
         }
+        .busy-status {
+            display: flex;
+            height: 30;
+            width: 179px;
+            padding: 5px 35px 5px 35px;
+            justify-content: center;
+            align-items: center;
+            border-radius: 3px;
+            background: rgba(255, 228, 94, 0.58);
+            border: none;
+            color: #234874;
+            text-align: center;
+            font-family: Poppins;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            text-transform: capitalize;
+    }
 
+    .busy-dot {
+        background: rgba(255, 228, 94, 1);
+        position: absolute;
+    
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            top: 15px;
+            /* Adjust the top position as needed */
+            left: 15px;
+    }
+
+    .offline-status {
+        display: flex;
+            height: 30;
+            width: 179px;
+            padding: 5px 35px 5px 35px;
+            justify-content: center;
+            align-items: center;
+            border-radius: 3px;
+            background: rgba(255, 99, 146, 0.32);
+            border: none;
+            color: #FF6392;
+            text-align: center;
+            font-family: Poppins;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            text-transform: capitalize;
+    }
+
+    .offline-dot {
+        background: rgba(255, 99, 146, 1);
+        position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            top: 15px;
+            /* Adjust the top position as needed */
+            left: 15px;
+    }
+
+    .available-status {
+        display: flex;
+            height: 30;
+            width: 179px;
+            padding: 5px 35px 5px 35px;
+            justify-content: center;
+            align-items: center;
+            border-radius: 3px;
+            background: rgba(51, 183, 146, 1);
+            border: none;
+            color: white;
+            text-align: center;
+            font-family: Poppins;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 600;
+           line-height: normal;
+           text-transform: capitalize;
+    }
+
+    .available-dot {
+        background: rgba(51, 183, 146, 1);
+        position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            top: 15px;
+            /* Adjust the top position as needed */
+            left: 15px;
+    }
 
         .btn-register {
             color: var(--primary-color);
@@ -96,14 +188,18 @@
         }
 
         .nama-dokter {
-            font-family: Poppins;
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 5px;
-            margin-right: auto;
-            width: 139px;
-            min-height: 26px;
-        }
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    margin-right: auto;
+    width: 179px;
+    min-height: 26px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 
         .form-control {
             border-radius: 10px;
@@ -170,18 +266,7 @@
             margin-bottom: 5px;
         }
 
-        .dot {
-            position: absolute;
-            color: #FFE45E;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            top: -5px;
-            /* Adjust the top position as needed */
-            right: -5px;
-            /* Adjust the right position as needed */
-        }
-
+       
         .foto-doctor {
             width: 100%;
             height: 100%;
@@ -260,7 +345,7 @@
                 <div class="col-md-6">
                     <p
                         style="color: var(--primary-color); font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 30px; height: 28px;">
-                        Make Assignment with our doctor</p>
+                        Make assignment with our doctor</p>
                 </div>
                 <div class="col-md-6">
                     <form action="{{ route('frontend.list') }}" method="">
@@ -285,16 +370,29 @@
                                     <div class=" card-doctor mb-2">
                                         <img src="{{ asset('/assets/img/icons/services/usman.png') }}" alt=""
                                             class="foto-doctor">
-                                        <div class="dot"></div>
+                                            <div class=" 
+            @if($doctor->status == 'busy') busy-dot
+            @elseif($doctor->status == 'available') available-dot
+            @elseif($doctor->status == 'offline') offline-dot
+            @endif">
+        </div>
                                     </div>
                                     <div class="description " style="color: var(--primary-color);">
-                                        <p class="nama-dokter">{{ $doctor->name }}</p>
-                                        <p class="bidang-dokter">{{ $doctor->specialist->name }}</p>
+                                        <p class="nama-dokter">
+                                        Dr. {{ explode(' ', $doctor->name)[0] }}
+                                        </p>
+                                        <p class="bidang-dokter">
+                                        <i class="fa-solid fa-suitcase-medical"></i>
+                                            {{ $doctor->specialist->name }}</p>
                                         <p class="bio-dokter">
                                             <i class="fa-solid fa-clock"></i>
                                             {{ \Carbon\Carbon::parse($doctor->start_time)->format('H:i') }} -
                                             {{ \Carbon\Carbon::parse($doctor->end_time)->format('H:i') }}
                                         </p>
+                                        <div class="bio-dokter">
+                                        <i class="fa-solid fa-hospital"></i>
+                                            {{$doctor->hospital->name}}
+                                        </div>
                                         <div class="rating-dokter">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 viewBox="0 0 16 16" fill="none">
@@ -304,7 +402,13 @@
                                             </svg>
                                             5.0
                                         </div>
-                                        <div class=" btn-consul mt-4 ">{{ $doctor->status }} </div>
+                                        <div class="  
+    @if($doctor->status == 'busy') busy-status mt-4
+    @elseif($doctor->status == 'available') available-status mt-4
+    @elseif($doctor->status == 'offline') offline-status mt-4
+    @endif">
+    {{ $doctor->status }}
+</div>
                                     </div>
                                 </div>
                             </div>

@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\UserRole;
-use App\Models\Doctor;
 use App\Models\User;
+use App\Models\Doctor;
+use App\Enums\UserRole;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+
 
 class FrontendController extends Controller
 {
@@ -47,35 +48,40 @@ class FrontendController extends Controller
             return redirect()->route('frontend.index');
         }
 
-        return redirect('login')->with('error', 'Email and password do not match!');
+        return redirect()->back()->with('error', 'Email and password do not match!');
     }
 
     public function processRegister(Request $request)
     {
-        $request->validate(
-            [
-                'fullname' => 'required|string|min:5',
-                'email' => 'required|email|unique:users',
-                'phone' => 'required|min:10',
-                'password' => 'required|min:8'
-            ],
-            [
-                'fullname.required' => 'Fullname harus diisi',
-                'fullname.min' => 'Fullname harus berisi minimal 5',
-                'email.required' => 'Email harus diisi',
-                'email.unique' => 'Email sudah digunakan',
-                'phone.unique' => 'Phone sudah digunakan',
-                'phone.required' => 'Phone harus diisi',
-                'phone.min' => 'Phone harus berisi minimal 10',
-                'email.email' => 'Email harus berbentuk email',
-                'password.required' => 'Password harus diisi',
-                'password.min' => 'Password harus berisi minimal 8'
-            ]
-        );
+       // dd($request->all()); 
+       $request->validate(
+        [
+            'name' => 'required|string|min:5',
+            'email' => 'required|email|unique:users',
+            'phone' => 'required|min:10',
+            'password' => 'required|min:8',
+             
+        ],
+        [
+            'name.required' => 'Fullname harus diisi',
+            'name.min' => 'Fullname harus berisi minimal 5',
+            'email.required' => 'Email harus diisi',
+            'email.unique' => 'Email sudah digunakan',
+            'email.email' => 'Email harus berbentuk email',
+            'phone.unique' => 'Phone sudah digunakan',
+            'phone.required' => 'Phone harus diisi',
+            'phone.min' => 'Phone harus berisi minimal 10',
+            'password.required' => 'Password harus diisi',
+            'password.min' => 'Password harus berisi minimal 8',
+             
+        ]
+    );
+    
+         
 
         $user = User::create([
-            'name' => $request->fullname,
-            'username' => $request->username,
+            'name' => $request->name,
+            'phone' => $request->phone,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => UserRole::Consultan,
