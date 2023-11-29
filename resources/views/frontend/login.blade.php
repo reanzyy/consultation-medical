@@ -64,8 +64,8 @@
                 <div class="col-md-7 p-0">
                 
                     <div class="image"
-                        style="background: url({{ asset('/assets/img/illustrations/login-image.png') }}) background-postion:cover background-repeat no-repeat height:100vh width: 100%">
-                        <a href="" class="app-brand-link gap-2">
+                        style="background: url({{ asset('/assets/img/illustrations/login-image.png') }}); background-position: cover; background-repeat: no-repeat; height: 100vh; width: 100%;">
+                         <a href="" class="app-brand-link gap-2">
                             <img src="{{ asset('/assets/img/favicon/logo.png') }}" draggable="false" width="50"
                                 class="m-5">
                         </a>
