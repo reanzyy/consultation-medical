@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Auth\Middleware\Authenticate;
 use App\Http\Controllers\DashboardController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\HospitalController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\SpecialistController;
 use App\Http\Controllers\UserController;
+use App\Models\Consultation;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,18 +27,23 @@ use App\Http\Controllers\UserController;
 
 Route::controller(FrontendController::class)->name('frontend.')->group(function () {
     Route::get('/', 'index')->name('index');
-    Route::get('/login', 'login')->name('loginUser');
-    Route::post('/login/proses', 'processLogin')->name('process')->middleware('guest');
+    Route::get('/login', 'login')->name('loginUser')->middleware('guest');
+    Route::post('/login/proses/test', 'processLogin')->name('user.login.process');
     Route::get('/register', 'register')->name('register');
     Route::post('/register/process', 'processRegister')->name('register.process')->middleware('guest');
     Route::get('/list', [FrontendController::class, 'list'])->name('list')->middleware('auth');
+    Route::get('/form-consul/{id}', [FrontendController::class, 'formConsul'])->name('form-consul')->middleware('auth');
+    Route::post('/form-consul', [FrontendController::class, 'storeFormConsul'])->name('form-consul.process');
+    Route::get('/done-sending', [FrontendController::class, 'doneSending'])->name('done-sending');
 });
-
-
 
 Route::get('loginadmin', [AuthController::class, 'index'])->name('login')->middleware('guest');
 Route::post('login', [AuthController::class, 'login'])->name('login.process');
 Route::get('logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+
+
+Route::get('/logindoctor', [DoctorController::class, 'login'])->name('logindoctor')->middleware('guest');
+Route::post('/login/proses', [DoctorController::class, 'processLogin'])->name('login.doctor.process');
 
 Route::middleware([Authenticate::class])->group(function () {
 
@@ -72,6 +79,15 @@ Route::middleware([Authenticate::class])->group(function () {
         Route::get('/{id}/edit', 'edit')->name('edit');
         Route::put('/{id}', 'update')->name('update');
         Route::delete('/{id}', 'destroy')->name('destroy');
+    });
+    
+    Route::controller(ConsultationController::class)->prefix('consultations')->name('consultations.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        // Route::get('/create', 'create')->name('create');
+        // Route::post('/', 'store')->name('store');
+        // Route::get('/{id}/edit', 'edit')->name('edit');
+        // Route::put('/{id}', 'update')->name('update');
+        // Route::delete('/{id}', 'destroy')->name('destroy');
     });
 
     Route::controller(HospitalController::class)->prefix('hospitals')->name('hospitals.')->group(function () {

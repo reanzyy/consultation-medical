@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Doctor;
 use App\Enums\UserRole;
+use App\Models\Consultation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -26,6 +27,34 @@ class FrontendController extends Controller
     public function register()
     {
         return view('frontend.register');
+    }
+
+    public function formConsul($id)
+    {
+        $doctor = Doctor::find($id);
+        abort_if(!$doctor, 404, 'Dokter tidak ditemukan!');
+        return view('frontend.form-consul', compact('doctor'));
+    }
+    public function doneSending()
+    {
+        return view('frontend.done-send');
+    }
+
+    public function storeFormConsul(Request $request)
+    {
+        $request->validate([
+            'doctor_id' => 'required|max:255',
+            'user_id' => 'required|max:255',
+            'description' => 'required|min:5',
+        ]);
+
+        Consultation::create($request->all());
+        $doctor = Doctor::find($request->doctor_id);
+
+        if ($doctor) {
+            $doctor->update(['status' => 'busy']);
+        }
+        return dd('test');
     }
 
     public function processLogin(Request $request)

@@ -10,16 +10,16 @@ class Consultation extends Model
     use HasFactory;
     protected $fillable =[
        
-        'patient_id',
+        'user_id',
         'doctor_id',
         'description',
         'approval_user_id',
         'approval_at',
     ];
 
-    public function patient()
+    public function user()
     {
-        return $this->belongsTo(Patient::class);
+        return $this->belongsTo(User::class);
     }
 
     public function doctor()

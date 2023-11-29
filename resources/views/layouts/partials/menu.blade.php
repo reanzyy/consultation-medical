@@ -14,7 +14,9 @@
     <ul class="menu-inner py-1">
 
         <?php
-        $menus = [
+        $userRole = Auth::user()->role;
+        $menus = [];
+        $adminMenus = [
             (object) [
                 'title' => 'Menu',
             ],
@@ -76,9 +78,49 @@
                 'childs' => [],
             ],
         ];
+        $doctorMenus = [
+            (object) [
+                'title' => 'Menu',
+            ],
+            (object) [
+                'name' => 'Dashboard',
+                'icon' => 'bx-home-circle',
+                'link' => 'dashboard',
+                'childs' => [],
+            ],
+            (object) [
+                'name' => 'Kelola Konsultasi',
+                'icon' => 'bx-home-circle',
+                'link' => 'consultations',
+                'childs' => [],
+            ],
+            (object) [
+                'title' => 'Account',
+            ],
+            (object) [
+                'name' => 'Profile',
+                'icon' => 'bx-user',
+                'link' => 'profile',
+                'childs' => [],
+            ],
+            (object) [
+                'name' => 'Logout',
+                'icon' => 'bx-log-out',
+                'link' => 'logout',
+                'childs' => [],
+            ],
+        ];
+
+        if ($userRole === 'admin') {
+            $menus = $adminMenus;
+        } elseif ($userRole === 'doctor') {
+            $menus = $doctorMenus;
+        } else {
+            $menus = $menus; // Default menu for other roles or unassigned roles
+        }
         ?>
 
-        @foreach ($menus as $menu)
+        @foreach ($menus  as $menu)
             @if (isset($menu->title))
                 <li class="menu-header small text-uppercase">
                     <span class="menu-header-text">{{ $menu->title }}</span>

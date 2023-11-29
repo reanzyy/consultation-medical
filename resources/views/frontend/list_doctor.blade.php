@@ -14,293 +14,7 @@
     <link rel="stylesheet" href="{{ url('/assets/vendor/css/theme-default.css') }}"
         class="template-customizer-theme-css" />
     <link rel="stylesheet" href="{{ url('/assets/css/demo.css') }}" />
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
-
-        :root {
-            --background-color: #F9F9F9;
-            --primary-color: #528AC8;
-            --secondary-color: #7FC8F8;
-            --font-poppins: 'Poppins', sans-serif;
-            --font-libre: 'Libre Baskerville', serif;
-        }
-
-        * {
-            box-sizing: border-box;
-            padding: 0;
-            margin: 0;
-        }
-
-        .custom-padding {
-            padding: 45px 100px 110px 103px;
-            font-size: 14px;
-        }
-
-        .nav-link {
-            color: var(--primary-color) !important;
-            margin: 0 1rem;
-        }
-
-        #btn-navbar {
-            gap: 1rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .description {
-            margin-left: 10px;
-            margin-top: -15px;
-
-            color: var(--primary-color);
-        }
-        .busy-status {
-            display: flex;
-            height: 30;
-            width: 179px;
-            padding: 5px 35px 5px 35px;
-            justify-content: center;
-            align-items: center;
-            border-radius: 3px;
-            background: rgba(255, 228, 94, 0.58);
-            border: none;
-            color: #234874;
-            text-align: center;
-            font-family: Poppins;
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: normal;
-            text-transform: capitalize;
-    }
-
-    .busy-dot {
-        background: rgba(255, 228, 94, 1);
-        position: absolute;
-    
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            top: 15px;
-            /* Adjust the top position as needed */
-            left: 15px;
-    }
-
-    .offline-status {
-        display: flex;
-            height: 30;
-            width: 179px;
-            padding: 5px 35px 5px 35px;
-            justify-content: center;
-            align-items: center;
-            border-radius: 3px;
-            background: rgba(255, 99, 146, 0.32);
-            border: none;
-            color: #FF6392;
-            text-align: center;
-            font-family: Poppins;
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: normal;
-            text-transform: capitalize;
-    }
-
-    .offline-dot {
-        background: rgba(255, 99, 146, 1);
-        position: absolute;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            top: 15px;
-            /* Adjust the top position as needed */
-            left: 15px;
-    }
-
-    .available-status {
-        display: flex;
-            height: 30;
-            width: 179px;
-            padding: 5px 35px 5px 35px;
-            justify-content: center;
-            align-items: center;
-            border-radius: 3px;
-            background: rgba(51, 183, 146, 1);
-            border: none;
-            color: white;
-            text-align: center;
-            font-family: Poppins;
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 600;
-           line-height: normal;
-           text-transform: capitalize;
-    }
-
-    .available-dot {
-        background: rgba(51, 183, 146, 1);
-        position: absolute;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            top: 15px;
-            /* Adjust the top position as needed */
-            left: 15px;
-    }
-
-        .btn-register {
-            color: var(--primary-color);
-            padding: 5px 10px;
-            text-decoration: none;
-            border: 1px solid var(--primary-color);
-            font-weight: 500;
-            border-radius: 20px;
-        }
-
-        .btn-login {
-            color: white;
-            padding: 5px 15px;
-            text-decoration: none;
-            background-color: var(--primary-color);
-            font-weight: 500;
-            border-radius: 20px;
-        }
-
-        .btn-login:hover {
-            color: white;
-        }
-
-        .btn-register:hover {
-            background-color: var(--primary-color);
-            transition: 0.3s ease-in-out;
-            color: white;
-        }
-
-        .btn-start {
-            color: white;
-            margin-top: 1000000rem;
-            padding: 10px 20px;
-            text-decoration: none;
-            background-color: var(--secondary-color);
-            font-weight: 500;
-            border-radius: 20px;
-        }
-
-        .nama-dokter {
-    font-family: Poppins;
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 5px;
-    margin-right: auto;
-    width: 179px;
-    min-height: 26px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-
-        .form-control {
-            border-radius: 10px;
-        }
-
-        .input-group {
-            border: 1px solid var(--primary-color);
-            border-radius: 10px;
-        }
-
-        .card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            border-radius: 10px;
-            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-            width: 358px;
-            height: 214px;
-            margin-bottom: 20px;
-        }
-
-        .card-body {
-            margin: -10px;
-        }
-
-        .btn-consul {
-
-            display: flex;
-            height: 30;
-            width: 179px;
-            padding: 5px 35px 5px 35px;
-            justify-content: center;
-            align-items: center;
-            border-radius: 3px;
-            background: rgba(255, 228, 94, 0.58);
-            border: none;
-            color: #234874;
-            text-align: center;
-            font-family: Poppins;
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: normal;
-        }
-
-        .footer {
-            color: white;
-            background-color: var(--primary-color);
-        }
-
-        .sub-footer {
-            font-family: var(--font-libre);
-            color: white;
-        }
-
-        .card-doctor {
-            background: linear-gradient(to right, #D8EEFF, #FDFCE0);
-        }
-
-        .bio-dokter {
-            font-family: Poppins;
-            font-size: 14px;
-            font-weight: 400;
-            margin-bottom: 5px;
-        }
-
-       
-        .foto-doctor {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .bidang-dokter {
-            font-family: Poppins;
-            font-size: 14px;
-            font-weight: 300;
-            margin-bottom: 5px;
-        }
-
-        .rating-dokter {
-            color: #234874;
-            font-family: Poppins;
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: normal;
-        }
-
-        .dot {
-            position: absolute;
-            background-color: yellow;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            top: 15px;
-            /* Adjust the top position as needed */
-            left: 15px;
-            /* Adjust the left position as needed */
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url('/assets/css/app.css') }}" />
     <title>SemestaCare</title>
 </head>
 
@@ -322,16 +36,6 @@
                             Home
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Doctors</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Consultations</a>
-                    </li>
-                </ul>
             </div>
         </div>
     </nav>
@@ -371,11 +75,11 @@
                                         <img src="{{ asset('/assets/img/icons/services/usman.png') }}" alt=""
                                             class="foto-doctor">
                                             <div class=" 
-            @if($doctor->status == 'busy') busy-dot
-            @elseif($doctor->status == 'available') available-dot
-            @elseif($doctor->status == 'offline') offline-dot
-            @endif">
-        </div>
+                                            @if($doctor->status == 'busy') busy-dot
+                                            @elseif($doctor->status == 'available') available-dot
+                                            @elseif($doctor->status == 'offline') offline-dot
+                                            @endif">
+                                        </div>
                                     </div>
                                     <div class="description " style="color: var(--primary-color);">
                                         <p class="nama-dokter">
@@ -402,13 +106,20 @@
                                             </svg>
                                             5.0
                                         </div>
-                                        <div class="  
-    @if($doctor->status == 'busy') busy-status mt-4
-    @elseif($doctor->status == 'available') available-status mt-4
-    @elseif($doctor->status == 'offline') offline-status mt-4
-    @endif">
-    {{ $doctor->status }}
-</div>
+                                        @if ($doctor->status == 'busy')
+                                        <button class="mt-4 busy-status">
+                                        {{ $doctor->status }}</button>
+                                        @endif
+                                        @if ($doctor->status == 'available')
+                                            <a class="text-white mt-4 available-status" href="{{ route('frontend.form-consul', $doctor->id) }}">
+                                                {{ $doctor->status }}
+                                            </a>
+                                        @endif
+                                        @if ($doctor->status == 'offline')
+                                        <button class="mt-4 offline-status">
+                                        {{ $doctor->status }}</button>
+                                        @endif
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -457,9 +168,5 @@
 
         </div>
     </section>
-    <script src="{{ url('/assets/vendor/libs/jquery/jquery.js') }}"></script>
-    <script src="{{ url('/assets/vendor/libs/popper/popper.js') }}"></script>
-    <script src="{{ url('/assets/vendor/js/bootstrap.js') }}"></script>
 </body>
-
 </html>
